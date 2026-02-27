@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog | Rehmat Discourse</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- SVG Icons via Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <div class="custom-cursor"></div>
+    <div
+      class="pattern-bg"
+      style="mask-image: linear-gradient(to bottom, white, transparent)"
+    ></div>
+
+    <header class="site-header">
+      <div class="container header-container">
+        <a href="index.html" class="logo">
+          <div class="logo-dot"></div>
+          Rehmat
+        </a>
+        <nav class="header-nav">
+          <a href="index.html#about" class="nav-link">About</a>
+          <a href="index.html#expertise" class="nav-link">Expertise</a>
+          <a href="index.html#projects" class="nav-link">Deployments</a>
+          <a href="blog.html" class="nav-link active">Blog</a>
+        </nav>
+        <div>
+          <a
+            href="index.html#contact"
+            class="btn btn-outline"
+            style="height: 2rem; font-size: 0.75rem"
+            >Book Workshop</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main
+      class="container"
+      style="padding-top: 5rem; padding-bottom: 5rem; max-width: 800px"
+    >
+      <div style="margin-bottom: 4rem">
+        <h1
+          style="font-size: 3rem; margin-bottom: 1rem; letter-spacing: -0.04em"
+        >
+          Engineering Discourse
+        </h1>
+        <p class="text-muted" style="font-size: 1.125rem">
+          Technical essays, architectural reflections, and insights into
+          systemizing engineering education.
+        </p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 2rem">
+        <article
+          class="card gsap-block"
+          style="
+            padding: 2rem;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1rem;
+            "
+          >
+            <span
+              class="text-primary"
+              style="font-size: 0.875rem; font-weight: 600"
+              >System Design</span
+            >
+            <span class="text-muted" style="font-size: 0.875rem"
+              >Feb 26, 2026</span
+            >
+          </div>
+          <h2 style="font-size: 1.75rem; margin-bottom: 1rem">
+            The Myth of the Framework-First Developer
+          </h2>
+          <p class="text-muted" style="margin-bottom: 1.5rem; line-height: 1.7">
+            Why skipping core HTTP mechanics and diving straight into React or
+            Spring Boot creates terminal architecture flaws in junior engineers,
+            and how to rewrite their foundational understanding.
+          </p>
+          <a
+            href="#"
+            style="
+              display: inline-flex;
+              align-items: center;
+              font-weight: 500;
+              color: var(--foreground);
+              font-size: 0.875rem;
+            "
+          >
+            Read Article
+            <i
+              data-lucide="arrow-right"
+              style="width: 16px; height: 16px; margin-left: 8px"
+            ></i>
+          </a>
+        </article>
+
+        <article
+          class="card gsap-block"
+          style="
+            padding: 2rem;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1rem;
+            "
+          >
+            <span
+              class="text-primary"
+              style="font-size: 0.875rem; font-weight: 600"
+              >Technical Education</span
+            >
+            <span class="text-muted" style="font-size: 0.875rem"
+              >Jan 14, 2026</span
+            >
+          </div>
+          <h2 style="font-size: 1.75rem; margin-bottom: 1rem">
+            Designing the Destruction Lab
+          </h2>
+          <p class="text-muted" style="margin-bottom: 1.5rem; line-height: 1.7">
+            Teaching students how code works is easy. Teaching them how to
+            gracefully handle cascading failure across a distributed system
+            requires dropping them into a broken environment intentionally.
+          </p>
+          <a
+            href="#"
+            style="
+              display: inline-flex;
+              align-items: center;
+              font-weight: 500;
+              color: var(--foreground);
+              font-size: 0.875rem;
+            "
+          >
+            Read Article
+            <i
+              data-lucide="arrow-right"
+              style="width: 16px; height: 16px; margin-left: 8px"
+            ></i>
+          </a>
+        </article>
+
+        <article
+          class="card gsap-block"
+          style="
+            padding: 2rem;
+            border-radius: var(--radius);
+            transition: all 0.2s;
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 1rem;
+            "
+          >
+            <span
+              class="text-primary"
+              style="font-size: 0.875rem; font-weight: 600"
+              >Web Architecture</span
+            >
+            <span class="text-muted" style="font-size: 0.875rem"
+              >Dec 03, 2025</span
+            >
+          </div>
+          <h2 style="font-size: 1.75rem; margin-bottom: 1rem">
+            State Management Before The Frontend
+          </h2>
+          <p class="text-muted" style="margin-bottom: 1.5rem; line-height: 1.7">
+            Deconstructing user sessions, JWT tokens, and underlying persistence
+            layers before they reach the browser engine. Focusing on security
+            boundaries and payload overhead.
+          </p>
+          <a
+            href="#"
+            style="
+              display: inline-flex;
+              align-items: center;
+              font-weight: 500;
+              color: var(--foreground);
+              font-size: 0.875rem;
+            "
+          >
+            Read Article
+            <i
+              data-lucide="arrow-right"
+              style="width: 16px; height: 16px; margin-left: 8px"
+            ></i>
+          </a>
+        </article>
+      </div>
+    </main>
+
+    <footer style="border-top: 1px solid var(--border); padding: 4rem 0">
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div>
+          <div class="logo" style="margin-bottom: 0.5rem">Rehmat</div>
+          <p class="text-muted" style="font-size: 0.875rem">
+            &copy; 2026 Rehmat. All systems nominal.
+          </p>
+        </div>
+        <div style="display: flex; gap: 1rem">
+          <a
+            href="#"
+            class="btn btn-outline"
+            style="width: 40px; height: 40px; padding: 0; border-radius: 50%"
+            ><i data-lucide="linkedin" style="width: 18px; height: 18px"></i
+          ></a>
+          <a
+            href="#"
+            class="btn btn-outline"
+            style="width: 40px; height: 40px; padding: 0; border-radius: 50%"
+            ><i data-lucide="github" style="width: 18px; height: 18px"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

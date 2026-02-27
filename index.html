@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rehmat | Tech Trainer & Web Architect</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- SVG Icons via Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- GSAP Setup -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- Lenis for smooth scrolling -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div
+      class="pattern-bg"
+      style="mask-image: linear-gradient(to bottom, white, transparent)"
+    ></div>
+
+    <!-- Shadcn-like sticky header -->
+    <header class="site-header">
+      <div class="container header-container">
+        <a href="index.html" class="logo">
+          <div class="logo-dot"></div>
+          Rehmat
+        </a>
+        <nav class="header-nav">
+          <a href="#about" class="nav-link">About</a>
+          <a href="#expertise" class="nav-link">Expertise</a>
+          <a href="#projects" class="nav-link">Deployments</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+        </nav>
+        <div>
+          <a
+            href="#contact"
+            class="btn btn-outline"
+            style="height: 2rem; font-size: 0.75rem"
+            >Book Workshop</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <!-- Hero Section -->
+      <section
+        class="section"
+        style="
+          padding-top: 6rem;
+          padding-bottom: 6rem;
+          border-bottom: 1px solid var(--border);
+        "
+      >
+        <div style="max-width: 800px">
+          <div class="badge badge-primary" style="margin-bottom: 1rem">
+            <i
+              data-lucide="terminal"
+              style="width: 14px; height: 14px; margin-right: 6px"
+            ></i>
+            Technical Trainer & Architect
+          </div>
+          <h1
+            style="
+              font-size: clamp(3rem, 6vw, 4.5rem);
+              margin-bottom: 1.5rem;
+              letter-spacing: -0.04em;
+            "
+          >
+            Engineering <span class="text-primary">Understanding.</span><br />
+            Architecting Minds.
+          </h1>
+          <p
+            class="text-muted"
+            style="font-size: 1.25rem; max-width: 650px; margin-bottom: 2rem"
+          >
+            Bridging the gap between academic depth and enterprise-grade system
+            logic. Replacing 'framework-first' tutorials with true core
+            computational thinking.
+          </p>
+          <div style="display: flex; gap: 1rem">
+            <a href="#expertise" class="btn btn-primary btn-lg"
+              >Explore Methodology
+              <i
+                data-lucide="arrow-right"
+                style="width: 16px; height: 16px; margin-left: 8px"
+              ></i
+            ></a>
+            <a
+              href="images/abstract_architecture_1772124103373.png"
+              target="_blank"
+              class="btn btn-secondary btn-lg"
+              >View Schematics
+              <i
+                data-lucide="external-link"
+                style="width: 16px; height: 16px; margin-left: 8px"
+              ></i
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section
+        class="section"
+        id="about"
+        style="border-bottom: 1px solid var(--border)"
+      >
+        <div class="grid-cols-2" style="align-items: center">
+          <div class="gsap-block">
+            <h2 style="font-size: 2.25rem; margin-bottom: 1rem">
+              Teaching is system design for cognition.
+            </h2>
+            <p class="text-muted" style="margin-bottom: 1.5rem">
+              I bring over 4+ years of focused experience to the training room.
+              Traditional education relies on content delivery—memorizing syntax
+              without understanding structure.
+            </p>
+            <p class="text-muted" style="margin-bottom: 2rem">
+              My strategy relies entirely on deconstructing real-world systems.
+              We break applications intentionally to study their failure modes,
+              rebuilding them with architectural precision.
+            </p>
+
+            <div
+              style="
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 1rem;
+                border-top: 1px solid var(--border);
+                padding-top: 2rem;
+              "
+            >
+              <div>
+                <h3 style="font-size: 2rem">4+</h3>
+                <p class="text-muted" style="font-size: 0.875rem">
+                  Years Training
+                </p>
+              </div>
+              <div>
+                <h3 style="font-size: 2rem">100%</h3>
+                <p class="text-muted" style="font-size: 0.875rem">Lab Focus</p>
+              </div>
+              <div>
+                <h3 style="font-size: 2rem">1000+</h3>
+                <p class="text-muted" style="font-size: 0.875rem">
+                  Developers Trained
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="gsap-block"
+            style="position: relative; padding-left: 2rem"
+          >
+            <img
+              src="images/abstract_architecture_1772124103373.png"
+              alt="Architecture Graph"
+              class="graphic-image"
+              style="width: 100%; aspect-ratio: 4/3; object-fit: cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Expertise -->
+      <section
+        class="section"
+        id="expertise"
+        style="border-bottom: 1px solid var(--border)"
+      >
+        <div style="margin-bottom: 3rem">
+          <h2 style="font-size: 2.25rem; margin-bottom: 0.5rem">
+            Core Competencies
+          </h2>
+          <p class="text-muted">
+            Specialized technical domains designed for high-impact educational
+            delivery.
+          </p>
+        </div>
+
+        <div class="grid-cols-3">
+          <div class="card gsap-block">
+            <div class="card-header">
+              <i
+                data-lucide="server"
+                class="text-primary"
+                style="margin-bottom: 0.5rem"
+              ></i>
+              <h3 class="card-title">Web Architecture</h3>
+              <p class="card-description">
+                HTTP lifecycle, Servlet APIs, and container mechanics.
+              </p>
+            </div>
+            <div class="card-content text-muted">
+              Deep dive into the request-response lifecycle to build true
+              foundational logic beneath the frameworks.
+            </div>
+          </div>
+
+          <div class="card gsap-block">
+            <div class="card-header">
+              <i
+                data-lucide="cpu"
+                class="text-primary"
+                style="margin-bottom: 0.5rem"
+              ></i>
+              <h3 class="card-title">Systems Programming</h3>
+              <p class="card-description">
+                Memory management, JVM internals, and OS interfaces.
+              </p>
+            </div>
+            <div class="card-content text-muted">
+              Exposing the underlying operational layers, handling deadlocks,
+              concurrency, and thread synchrony.
+            </div>
+          </div>
+
+          <div class="card gsap-block">
+            <div class="card-header">
+              <i
+                data-lucide="shield-alert"
+                class="text-primary"
+                style="margin-bottom: 0.5rem"
+              ></i>
+              <h3 class="card-title">Destruction Labs</h3>
+              <p class="card-description">
+                Intentional breaking of scalable systems.
+              </p>
+            </div>
+            <div class="card-content text-muted">
+              Building realistic sandbox environments where code is pushed past
+              limits and intentionally broken to study bottlenecks.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section
+        class="section"
+        id="projects"
+        style="border-bottom: 1px solid var(--border)"
+      >
+        <div style="margin-bottom: 3rem">
+          <h2 style="font-size: 2.25rem; margin-bottom: 0.5rem">
+            Live Artifacts
+          </h2>
+          <p class="text-muted">
+            Production-ready applications engineered explicitly for scalable
+            training structures.
+          </p>
+        </div>
+
+        <div class="grid-cols-2">
+          <div class="card gsap-block">
+            <div
+              style="
+                width: 100%;
+                height: 200px;
+                background-image: url(&quot;images/system_grid_1772124127708.png&quot;);
+                background-size: cover;
+                background-position: center;
+                border-bottom: 1px solid var(--border);
+                border-radius: var(--radius) var(--radius) 0 0;
+              "
+            ></div>
+            <div class="card-header">
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem">
+                <span class="badge">Raw Java EE</span>
+                <span class="badge">Tomcat</span>
+              </div>
+              <h3 class="card-title">Servlet-Based Commerce Engine</h3>
+              <p class="card-description">
+                An entirely pure servlet commerce core built without Spring.
+              </p>
+            </div>
+            <div class="card-content text-muted">
+              Demonstrates native Java HTTP handling, session caching, and raw
+              JDBC connection pools.
+            </div>
+            <div class="card-footer">
+              <a
+                href="https://github.com"
+                class="btn btn-secondary"
+                style="width: 100%"
+                >View Source
+                <i
+                  data-lucide="github"
+                  style="width: 16px; height: 16px; margin-left: 8px"
+                ></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="card gsap-block">
+            <div
+              style="
+                width: 100%;
+                height: 200px;
+                background-color: #18181b;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-bottom: 1px solid var(--border);
+                border-radius: var(--radius) var(--radius) 0 0;
+              "
+            >
+              <i
+                data-lucide="network"
+                style="
+                  width: 48px;
+                  height: 48px;
+                  color: var(--muted-foreground);
+                "
+              ></i>
+            </div>
+            <div class="card-header">
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem">
+                <span class="badge">React</span>
+                <span class="badge">Node.JS</span>
+                <span class="badge">Redis</span>
+              </div>
+              <h3 class="card-title">Distributed Caching Lab</h3>
+              <p class="card-description">
+                Training simulator that visualizes cache miss ratios.
+              </p>
+            </div>
+            <div class="card-content text-muted">
+              Visualizes round-robin load distribution interacting in real-time
+              under a synthetic bursted load vector.
+            </div>
+            <div class="card-footer">
+              <a
+                href="https://github.com"
+                class="btn btn-secondary"
+                style="width: 100%"
+                >View Source
+                <i
+                  data-lucide="github"
+                  style="width: 16px; height: 16px; margin-left: 8px"
+                ></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Logistics / Contact Form -->
+      <section class="section" id="contact" style="margin-bottom: 4rem">
+        <div class="grid-cols-2">
+          <div class="gsap-block">
+            <h2 style="font-size: 2.25rem; margin-bottom: 1rem">
+              Initiate Engagement
+            </h2>
+            <p class="text-muted" style="margin-bottom: 2rem">
+              Inquire about technical workshops, corporate training loops, or
+              architectural consulting for academic structures.
+            </p>
+
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                margin-bottom: 1rem;
+              "
+            >
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  background: var(--secondary);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <i data-lucide="mail" style="width: 20px; height: 20px"></i>
+              </div>
+              <div>
+                <p style="font-weight: 500; font-size: 0.875rem">Direct Line</p>
+                <p class="text-muted" style="font-size: 0.875rem">
+                  hello@remoishere.online
+                </p>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 1rem">
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 50%;
+                  background: var(--secondary);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <i data-lucide="map-pin" style="width: 20px; height: 20px"></i>
+              </div>
+              <div>
+                <p style="font-weight: 500; font-size: 0.875rem">
+                  Headquarters
+                </p>
+                <p class="text-muted" style="font-size: 0.875rem">
+                  Available Remotely & On-Site
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card gsap-block" style="padding: 2rem">
+            <form id="contactForm">
+              <div class="grid-cols-2" style="gap: 1rem; display: grid">
+                <div class="form-group" style="margin-bottom: 1rem">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    class="input"
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div class="form-group" style="margin-bottom: 1rem">
+                  <label for="email">Email address</label>
+                  <input
+                    type="email"
+                    id="email"
+                    class="input"
+                    placeholder="name@company.com"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 1rem">
+                <label for="type">Engagement Mode</label>
+                <select id="type" class="input" style="appearance: none">
+                  <option>Corporate Dev Onboarding</option>
+                  <option>University Capstone Architecture</option>
+                  <option>Consulting / Deep Dive</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Objectives</label>
+                <textarea
+                  id="message"
+                  class="textarea"
+                  placeholder="Explain the primary constraint..."
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 100%; margin-top: 1rem"
+              >
+                Transmit Request
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer style="border-top: 1px solid var(--border); padding: 4rem 0">
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div>
+          <div class="logo" style="margin-bottom: 0.5rem">Rehmat</div>
+          <p class="text-muted" style="font-size: 0.875rem">
+            &copy; 2026 Rehmat. All systems nominal.
+          </p>
+        </div>
+        <div style="display: flex; gap: 1rem">
+          <a
+            href="#"
+            class="btn btn-outline"
+            style="width: 40px; height: 40px; padding: 0; border-radius: 50%"
+            ><i data-lucide="linkedin" style="width: 18px; height: 18px"></i
+          ></a>
+          <a
+            href="#"
+            class="btn btn-outline"
+            style="width: 40px; height: 40px; padding: 0; border-radius: 50%"
+            ><i data-lucide="github" style="width: 18px; height: 18px"></i
+          ></a>
+          <a
+            href="#"
+            class="btn btn-outline"
+            style="width: 40px; height: 40px; padding: 0; border-radius: 50%"
+            ><i data-lucide="youtube" style="width: 18px; height: 18px"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
