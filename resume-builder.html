@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tools | Resume Builder - Rehmat</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/resume-builder.css" />
+    <!-- SVG Icons via Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- GSAP Setup -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- html2pdf.js for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="js/main.js" defer></script>
+    <script src="js/resume-builder.js" defer></script>
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div
+      class="pattern-bg"
+      style="mask-image: linear-gradient(to bottom, white, transparent)"
+    ></div>
+
+    <!-- Shadcn-like sticky header -->
+    <header class="site-header">
+      <div class="container header-container">
+        <a href="index.html" class="logo">
+          <div class="logo-dot"></div>
+          Rehmat
+        </a>
+        <nav class="header-nav">
+          <a href="index.html#about" class="nav-link">About</a>
+          <a href="index.html#expertise" class="nav-link">Expertise</a>
+          <a href="index.html#projects" class="nav-link">Deployments</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="tools.html" class="nav-link active">Tools</a>
+        </nav>
+        <div>
+          <a
+            href="index.html#contact"
+            class="btn btn-outline"
+            style="height: 2rem; font-size: 0.75rem"
+            >Book Workshop</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main class="app-container">
+      <!-- Left Panel: Form Inputs -->
+      <section class="editor-panel">
+        <div
+          class="header-actions"
+          style="
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          "
+        >
+          <h1 style="font-size: 1.5rem">Resume Generator</h1>
+          <div style="display: flex; gap: 1rem">
+            <button id="reset-btn" class="btn btn-outline btn-sm" type="button">
+              <i
+                data-lucide="rotate-ccw"
+                style="width: 14px; height: 14px; margin-right: 6px"
+              ></i>
+              Reset
+            </button>
+            <button
+              id="download-btn"
+              class="btn btn-primary btn-sm"
+              type="button"
+            >
+              <i
+                data-lucide="download"
+                style="width: 14px; height: 14px; margin-right: 6px"
+              ></i>
+              Download PDF
+            </button>
+          </div>
+        </div>
+
+        <form id="resume-form" class="gsap-block">
+          <!-- Personal Information -->
+          <div class="card form-section">
+            <div class="card-header">
+              <h2 class="card-title" style="font-size: 1.125rem">
+                Personal Information
+              </h2>
+            </div>
+            <div class="card-content">
+              <div class="grid-cols-2" style="gap: 1rem; margin-bottom: 1rem">
+                <div class="form-group" style="margin-bottom: 0">
+                  <label for="fullName">Full Name *</label>
+                  <input
+                    type="text"
+                    id="fullName"
+                    class="input"
+                    required
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div class="form-group" style="margin-bottom: 0">
+                  <label for="jobTitle">Professional Title *</label>
+                  <input
+                    type="text"
+                    id="jobTitle"
+                    class="input"
+                    required
+                    placeholder="Software Engineer"
+                  />
+                </div>
+              </div>
+              <div class="grid-cols-2" style="gap: 1rem; margin-bottom: 1rem">
+                <div class="form-group" style="margin-bottom: 0">
+                  <label for="email">Email *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    class="input"
+                    required
+                    placeholder="john@example.com"
+                  />
+                </div>
+                <div class="form-group" style="margin-bottom: 0">
+                  <label for="phone">Phone Number *</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    class="input"
+                    required
+                    placeholder="+1 234 567 8900"
+                  />
+                </div>
+              </div>
+              <div class="grid-cols-2" style="gap: 1rem">
+                <div class="form-group" style="margin-bottom: 0">
+                  <label for="location">Location</label>
+                  <input
+                    type="text"
+                    id="location"
+                    class="input"
+                    placeholder="New York, USA"
+                  />
+                </div>
+                <div class="form-group" style="margin-bottom: 0">
+                  <label for="linkedin">LinkedIn Profile</label>
+                  <input
+                    type="text"
+                    id="linkedin"
+                    class="input"
+                    placeholder="linkedin.com/in/johndoe"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Professional Summary -->
+          <div class="card form-section gsap-block" style="margin-top: 1.5rem">
+            <div class="card-header">
+              <h2 class="card-title" style="font-size: 1.125rem">
+                Professional Summary
+              </h2>
+            </div>
+            <div class="card-content">
+              <div class="form-group" style="margin-bottom: 0">
+                <textarea
+                  id="summary"
+                  class="textarea"
+                  rows="4"
+                  required
+                  placeholder="Experienced software engineer with a passion for building scalable web applications..."
+                ></textarea>
+                <div
+                  class="text-muted"
+                  style="
+                    text-align: right;
+                    font-size: 0.75rem;
+                    margin-top: 0.5rem;
+                  "
+                >
+                  <span id="summary-count">0</span> / 500
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="card form-section gsap-block" style="margin-top: 1.5rem">
+            <div class="card-header">
+              <h2 class="card-title" style="font-size: 1.125rem">Skills</h2>
+            </div>
+            <div class="card-content">
+              <div class="form-group">
+                <label for="techSkills"
+                  >Technical Skills (comma separated)</label
+                >
+                <textarea
+                  id="techSkills"
+                  class="textarea"
+                  rows="2"
+                  placeholder="JavaScript, React, Node.js, Python, SQL"
+                ></textarea>
+              </div>
+              <div class="form-group" style="margin-bottom: 0">
+                <label for="softSkills">Soft Skills (comma separated)</label>
+                <textarea
+                  id="softSkills"
+                  class="textarea"
+                  rows="2"
+                  placeholder="Leadership, Communication, Agile Methodologies"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience -->
+          <div class="card form-section gsap-block" style="margin-top: 1.5rem">
+            <div
+              class="card-header"
+              style="
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h2 class="card-title" style="font-size: 1.125rem">Experience</h2>
+              <button
+                type="button"
+                class="btn btn-outline btn-sm"
+                id="add-experience-btn"
+              >
+                <i
+                  data-lucide="plus"
+                  style="width: 14px; height: 14px; margin-right: 4px"
+                ></i>
+                Add
+              </button>
+            </div>
+            <div class="card-content" id="experience-container"></div>
+          </div>
+
+          <!-- Projects -->
+          <div class="card form-section gsap-block" style="margin-top: 1.5rem">
+            <div
+              class="card-header"
+              style="
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h2 class="card-title" style="font-size: 1.125rem">Projects</h2>
+              <button
+                type="button"
+                class="btn btn-outline btn-sm"
+                id="add-project-btn"
+              >
+                <i
+                  data-lucide="plus"
+                  style="width: 14px; height: 14px; margin-right: 4px"
+                ></i>
+                Add
+              </button>
+            </div>
+            <div class="card-content" id="projects-container"></div>
+          </div>
+
+          <!-- Education -->
+          <div class="card form-section gsap-block" style="margin-top: 1.5rem">
+            <div
+              class="card-header"
+              style="
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h2 class="card-title" style="font-size: 1.125rem">Education</h2>
+              <button
+                type="button"
+                class="btn btn-outline btn-sm"
+                id="add-education-btn"
+              >
+                <i
+                  data-lucide="plus"
+                  style="width: 14px; height: 14px; margin-right: 4px"
+                ></i>
+                Add
+              </button>
+            </div>
+            <div class="card-content" id="education-container"></div>
+          </div>
+
+          <!-- Certifications -->
+          <div class="card form-section gsap-block" style="margin-top: 1.5rem">
+            <div
+              class="card-header"
+              style="
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h2 class="card-title" style="font-size: 1.125rem">
+                Certifications
+              </h2>
+              <button
+                type="button"
+                class="btn btn-outline btn-sm"
+                id="add-cert-btn"
+              >
+                <i
+                  data-lucide="plus"
+                  style="width: 14px; height: 14px; margin-right: 4px"
+                ></i>
+                Add
+              </button>
+            </div>
+            <div class="card-content" id="certifications-container"></div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Right Panel: Live Preview -->
+      <section class="preview-panel">
+        <div class="resume-wrapper">
+          <div id="resume-preview" class="resume-document">
+            <div class="resume-header">
+              <h1 id="preview-name">John Doe</h1>
+              <h2 id="preview-title">Software Engineer</h2>
+              <div class="contact-info">
+                <span id="preview-email">john@example.com</span>
+                <span id="preview-phone" class="separator-before"
+                  >+1 234 567 8900</span
+                >
+                <span id="preview-location" class="separator-before"
+                  >New York, USA</span
+                >
+                <span id="preview-linkedin" class="separator-before"
+                  >linkedin.com/in/johndoe</span
+                >
+              </div>
+            </div>
+
+            <div class="resume-body">
+              <div class="resume-section" id="preview-summary-section">
+                <h3 class="section-title">Professional Summary</h3>
+                <p id="preview-summary">
+                  Experienced software engineer with a passion for building
+                  scalable web applications.
+                </p>
+              </div>
+
+              <div class="resume-section" id="preview-skills-section">
+                <h3 class="section-title">Skills</h3>
+                <div class="skills-content">
+                  <div id="preview-tech-skills-box" class="skill-category">
+                    <strong>Technical:</strong>
+                    <span id="preview-tech-skills">JavaScript, HTML, CSS</span>
+                  </div>
+                  <div id="preview-soft-skills-box" class="skill-category">
+                    <strong>Soft Skills:</strong>
+                    <span id="preview-soft-skills"
+                      >Communication, Teamwork</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <div class="resume-section" id="preview-experience-section">
+                <h3 class="section-title">Professional Experience</h3>
+                <div id="preview-experience-list"></div>
+              </div>
+
+              <div class="resume-section" id="preview-projects-section">
+                <h3 class="section-title">Projects</h3>
+                <div id="preview-projects-list"></div>
+              </div>
+
+              <div class="resume-section" id="preview-education-section">
+                <h3 class="section-title">Education</h3>
+                <div id="preview-education-list"></div>
+              </div>
+
+              <div class="resume-section" id="preview-certifications-section">
+                <h3 class="section-title">Certifications</h3>
+                <div id="preview-certifications-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Templates -->
+    <template id="tpl-experience-form">
+      <div class="dynamic-group">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            align-items: center;
+          "
+        >
+          <h4 style="font-size: 0.875rem; color: var(--muted-foreground)">
+            Experience Block
+          </h4>
+          <button
+            type="button"
+            class="remove-btn btn btn-outline"
+            style="
+              width: 24px;
+              height: 24px;
+              padding: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              border-color: transparent;
+            "
+          >
+            <i
+              data-lucide="trash-2"
+              style="width: 14px; height: 14px; color: #ef4444"
+            ></i>
+          </button>
+        </div>
+        <div class="grid-cols-2" style="gap: 1rem; margin-bottom: 1rem">
+          <div class="form-group" style="margin-bottom: 0">
+            <label>Job Title</label>
+            <input
+              type="text"
+              class="input exp-title"
+              placeholder="Senior Developer"
+            />
+          </div>
+          <div class="form-group" style="margin-bottom: 0">
+            <label>Company</label>
+            <input
+              type="text"
+              class="input exp-company"
+              placeholder="Tech Corp"
+            />
+          </div>
+        </div>
+        <div class="grid-cols-2" style="gap: 1rem; margin-bottom: 1rem">
+          <div class="form-group" style="margin-bottom: 0">
+            <label>Duration</label>
+            <input
+              type="text"
+              class="input exp-duration"
+              placeholder="Jan 2020 - Present"
+            />
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 0">
+          <label>Responsibilities</label>
+          <textarea
+            class="textarea exp-desc"
+            rows="3"
+            placeholder="- Developed key features..."
+          ></textarea>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-project-form">
+      <div class="dynamic-group">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            align-items: center;
+          "
+        >
+          <h4 style="font-size: 0.875rem; color: var(--muted-foreground)">
+            Project Block
+          </h4>
+          <button
+            type="button"
+            class="remove-btn btn btn-outline"
+            style="
+              width: 24px;
+              height: 24px;
+              padding: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              border-color: transparent;
+            "
+          >
+            <i
+              data-lucide="trash-2"
+              style="width: 14px; height: 14px; color: #ef4444"
+            ></i>
+          </button>
+        </div>
+        <div class="grid-cols-2" style="gap: 1rem; margin-bottom: 1rem">
+          <div class="form-group" style="margin-bottom: 0">
+            <label>Project Title</label>
+            <input
+              type="text"
+              class="input proj-title"
+              placeholder="E-commerce Platform"
+            />
+          </div>
+          <div class="form-group" style="margin-bottom: 0">
+            <label>Technologies Used</label>
+            <input
+              type="text"
+              class="input proj-tech"
+              placeholder="React, Node.js, MongoDB"
+            />
+          </div>
+        </div>
+        <div class="form-group" style="margin-bottom: 0">
+          <label>Description</label>
+          <textarea
+            class="textarea proj-desc"
+            rows="2"
+            placeholder="- Built a scalable microservices architecture..."
+          ></textarea>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-education-form">
+      <div class="dynamic-group">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            align-items: center;
+          "
+        >
+          <h4 style="font-size: 0.875rem; color: var(--muted-foreground)">
+            Education Block
+          </h4>
+          <button
+            type="button"
+            class="remove-btn btn btn-outline"
+            style="
+              width: 24px;
+              height: 24px;
+              padding: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              border-color: transparent;
+            "
+          >
+            <i
+              data-lucide="trash-2"
+              style="width: 14px; height: 14px; color: #ef4444"
+            ></i>
+          </button>
+        </div>
+        <div class="grid-cols-2" style="gap: 1rem; margin-bottom: 1rem">
+          <div class="form-group" style="margin-bottom: 0">
+            <label>Degree</label>
+            <input
+              type="text"
+              class="input edu-degree"
+              placeholder="B.S. Computer Science"
+            />
+          </div>
+          <div class="form-group" style="margin-bottom: 0">
+            <label>Institution</label>
+            <input
+              type="text"
+              class="input edu-school"
+              placeholder="University of Technology"
+            />
+          </div>
+        </div>
+        <div class="grid-cols-2" style="gap: 1rem; margin-bottom: 0">
+          <div class="form-group" style="margin-bottom: 0">
+            <label>Duration / Year</label>
+            <input
+              type="text"
+              class="input edu-year"
+              placeholder="2016 - 2020"
+            />
+          </div>
+          <div class="form-group" style="margin-bottom: 0">
+            <label>Grade / CGPA</label>
+            <input type="text" class="input edu-score" placeholder="3.8/4.0" />
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-cert-form">
+      <div class="dynamic-group">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            align-items: center;
+          "
+        >
+          <h4 style="font-size: 0.875rem; color: var(--muted-foreground)">
+            Certification Block
+          </h4>
+          <button
+            type="button"
+            class="remove-btn btn btn-outline"
+            style="
+              width: 24px;
+              height: 24px;
+              padding: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border-radius: 50%;
+              border-color: transparent;
+            "
+          >
+            <i
+              data-lucide="trash-2"
+              style="width: 14px; height: 14px; color: #ef4444"
+            ></i>
+          </button>
+        </div>
+        <div class="grid-cols-2" style="gap: 1rem; margin-bottom: 0">
+          <div class="form-group" style="margin-bottom: 0">
+            <label>Certification Name</label>
+            <input
+              type="text"
+              class="input cert-name"
+              placeholder="AWS Certified Solutions Architect"
+            />
+          </div>
+          <div class="form-group" style="margin-bottom: 0">
+            <label>Year / Issuer</label>
+            <input
+              type="text"
+              class="input cert-issuer"
+              placeholder="2022 - AWS"
+            />
+          </div>
+        </div>
+      </div>
+    </template>
+  </body>
+</html>

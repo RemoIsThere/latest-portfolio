@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern ATS Resume Builder</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- html2pdf.js for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Resume Builder</h1>
+      <div class="header-actions">
+        <button id="reset-btn" class="btn btn-outline" type="button">
+          Reset Form
+        </button>
+        <button id="download-btn" class="btn btn-primary" type="button">
+          Download PDF
+        </button>
+      </div>
+    </header>
+
+    <main class="app-container">
+      <!-- Left Panel: Form Inputs -->
+      <section class="editor-panel">
+        <form id="resume-form">
+          <!-- Personal Information -->
+          <div class="form-section">
+            <h2>Personal Information</h2>
+            <div class="form-row">
+              <div class="form-group half">
+                <label for="fullName">Full Name *</label>
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  required
+                  placeholder="John Doe"
+                />
+              </div>
+              <div class="form-group half">
+                <label for="jobTitle">Professional Title *</label>
+                <input
+                  type="text"
+                  id="jobTitle"
+                  name="jobTitle"
+                  required
+                  placeholder="Software Engineer"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group half">
+                <label for="email">Email *</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="john@example.com"
+                />
+              </div>
+              <div class="form-group half">
+                <label for="phone">Phone Number *</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  placeholder="+1 234 567 8900"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group half">
+                <label for="location">Location</label>
+                <input
+                  type="text"
+                  id="location"
+                  name="location"
+                  placeholder="New York, USA"
+                />
+              </div>
+              <div class="form-group half">
+                <label for="linkedin">LinkedIn / Portfolio</label>
+                <input
+                  type="text"
+                  id="linkedin"
+                  name="linkedin"
+                  placeholder="linkedin.com/in/johndoe"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Professional Summary -->
+          <div class="form-section">
+            <h2>Professional Summary</h2>
+            <div class="form-group">
+              <label for="summary">Summary *</label>
+              <textarea
+                id="summary"
+                name="summary"
+                rows="4"
+                required
+                placeholder="Experienced software engineer with a passion for building scalable web applications..."
+              ></textarea>
+              <div class="char-counter">
+                <span id="summary-count">0</span> / 500
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="form-section">
+            <h2>Skills</h2>
+            <div class="form-group">
+              <label for="techSkills">Technical Skills (comma separated)</label>
+              <textarea
+                id="techSkills"
+                name="techSkills"
+                rows="2"
+                placeholder="JavaScript, React, Node.js, Python, SQL"
+              ></textarea>
+            </div>
+            <div class="form-group">
+              <label for="softSkills">Soft Skills (comma separated)</label>
+              <textarea
+                id="softSkills"
+                name="softSkills"
+                rows="2"
+                placeholder="Leadership, Communication, Agile Methologies"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Experience -->
+          <div class="form-section">
+            <div class="section-header-flex">
+              <h2>Experience</h2>
+              <button
+                type="button"
+                class="btn btn-sm btn-outline"
+                id="add-experience-btn"
+              >
+                + Add Experience
+              </button>
+            </div>
+            <div id="experience-container">
+              <!-- Experience blocks injected here -->
+            </div>
+          </div>
+
+          <!-- Projects -->
+          <div class="form-section">
+            <div class="section-header-flex">
+              <h2>Projects</h2>
+              <button
+                type="button"
+                class="btn btn-sm btn-outline"
+                id="add-project-btn"
+              >
+                + Add Project
+              </button>
+            </div>
+            <div id="projects-container">
+              <!-- Project blocks injected here -->
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="form-section">
+            <div class="section-header-flex">
+              <h2>Education</h2>
+              <button
+                type="button"
+                class="btn btn-sm btn-outline"
+                id="add-education-btn"
+              >
+                + Add Education
+              </button>
+            </div>
+            <div id="education-container">
+              <!-- Education blocks injected here -->
+            </div>
+          </div>
+
+          <!-- Certifications -->
+          <div class="form-section">
+            <div class="section-header-flex">
+              <h2>Certifications</h2>
+              <button
+                type="button"
+                class="btn btn-sm btn-outline"
+                id="add-cert-btn"
+              >
+                + Add Certification
+              </button>
+            </div>
+            <div id="certifications-container">
+              <!-- Certification blocks injected here -->
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <!-- Right Panel: Live Preview -->
+      <section class="preview-panel">
+        <div class="resume-wrapper">
+          <div id="resume-preview" class="resume-document">
+            <div class="resume-header">
+              <h1 id="preview-name">John Doe</h1>
+              <h2 id="preview-title">Software Engineer</h2>
+              <div class="contact-info">
+                <span id="preview-email">john@example.com</span>
+                <span id="preview-phone" class="separator-before"
+                  >+1 234 567 8900</span
+                >
+                <span id="preview-location" class="separator-before"
+                  >New York, USA</span
+                >
+                <span id="preview-linkedin" class="separator-before"
+                  >linkedin.com/in/johndoe</span
+                >
+              </div>
+            </div>
+
+            <div class="resume-body">
+              <!-- Summary Section -->
+              <div class="resume-section" id="preview-summary-section">
+                <h3 class="section-title">Professional Summary</h3>
+                <p id="preview-summary">
+                  Experienced software engineer with a passion for building
+                  scalable web applications.
+                </p>
+              </div>
+
+              <!-- Skills Section -->
+              <div class="resume-section" id="preview-skills-section">
+                <h3 class="section-title">Skills</h3>
+                <div class="skills-content">
+                  <div id="preview-tech-skills-box" class="skill-category">
+                    <strong>Technical:</strong>
+                    <span id="preview-tech-skills">JavaScript, HTML, CSS</span>
+                  </div>
+                  <div id="preview-soft-skills-box" class="skill-category">
+                    <strong>Soft Skills:</strong>
+                    <span id="preview-soft-skills"
+                      >Communication, Teamwork</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Experience Section -->
+              <div class="resume-section" id="preview-experience-section">
+                <h3 class="section-title">Professional Experience</h3>
+                <div id="preview-experience-list">
+                  <!-- Dynamic items here -->
+                </div>
+              </div>
+
+              <!-- Projects Section -->
+              <div class="resume-section" id="preview-projects-section">
+                <h3 class="section-title">Projects</h3>
+                <div id="preview-projects-list">
+                  <!-- Dynamic items here -->
+                </div>
+              </div>
+
+              <!-- Education Section -->
+              <div class="resume-section" id="preview-education-section">
+                <h3 class="section-title">Education</h3>
+                <div id="preview-education-list">
+                  <!-- Dynamic items here -->
+                </div>
+              </div>
+
+              <!-- Certifications Section -->
+              <div class="resume-section" id="preview-certifications-section">
+                <h3 class="section-title">Certifications</h3>
+                <div id="preview-certifications-list">
+                  <!-- Dynamic items here -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Templates for dynamic blocks -->
+    <template id="tpl-experience-form">
+      <div class="dynamic-group experience-item">
+        <button type="button" class="remove-btn" title="Remove">&times;</button>
+        <div class="form-row">
+          <div class="form-group half">
+            <label>Job Title</label>
+            <input
+              type="text"
+              class="exp-title"
+              placeholder="Senior Developer"
+            />
+          </div>
+          <div class="form-group half">
+            <label>Company</label>
+            <input type="text" class="exp-company" placeholder="Tech Corp" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group half">
+            <label>Duration</label>
+            <input
+              type="text"
+              class="exp-duration"
+              placeholder="Jan 2020 - Present"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Responsibilities (Bullet points, separate by newline)</label>
+          <textarea
+            class="exp-desc"
+            rows="3"
+            placeholder="- Developed key features...&#10;- Led a team of..."
+          ></textarea>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-project-form">
+      <div class="dynamic-group project-item">
+        <button type="button" class="remove-btn" title="Remove">&times;</button>
+        <div class="form-row">
+          <div class="form-group half">
+            <label>Project Title</label>
+            <input
+              type="text"
+              class="proj-title"
+              placeholder="E-commerce Platform"
+            />
+          </div>
+          <div class="form-group half">
+            <label>Technologies Used</label>
+            <input
+              type="text"
+              class="proj-tech"
+              placeholder="React, Node.js, MongoDB"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description (Bullet points, separate by newline)</label>
+          <textarea
+            class="proj-desc"
+            rows="2"
+            placeholder="- Built a scalable microservices architecture..."
+          ></textarea>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-education-form">
+      <div class="dynamic-group education-item">
+        <button type="button" class="remove-btn" title="Remove">&times;</button>
+        <div class="form-row">
+          <div class="form-group half">
+            <label>Degree</label>
+            <input
+              type="text"
+              class="edu-degree"
+              placeholder="B.S. Computer Science"
+            />
+          </div>
+          <div class="form-group half">
+            <label>Institution</label>
+            <input
+              type="text"
+              class="edu-school"
+              placeholder="University of Technology"
+            />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group half">
+            <label>Year / Duration</label>
+            <input type="text" class="edu-year" placeholder="2016 - 2020" />
+          </div>
+          <div class="form-group half">
+            <label>Percentage / CGPA</label>
+            <input type="text" class="edu-score" placeholder="3.8/4.0" />
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="tpl-cert-form">
+      <div class="dynamic-group cert-item">
+        <button type="button" class="remove-btn" title="Remove">&times;</button>
+        <div class="form-row">
+          <div class="form-group half">
+            <label>Certification Name</label>
+            <input
+              type="text"
+              class="cert-name"
+              placeholder="AWS Certified Solutions Architect"
+            />
+          </div>
+          <div class="form-group half">
+            <label>Year / Issuer</label>
+            <input type="text" class="cert-issuer" placeholder="2022 - AWS" />
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+  </body>
+</html>

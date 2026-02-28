@@ -1,0 +1,206 @@
+/* Resume Builder Specific Layout */
+.app-container {
+  display: flex;
+  min-height: calc(100vh - 3.5rem); /* Below header */
+  background-color: var(--background);
+}
+
+.editor-panel {
+  width: 50%;
+  padding: 2rem;
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  height: calc(100vh - 3.5rem);
+}
+
+.preview-panel {
+  width: 50%;
+  padding: 2rem;
+  overflow-y: auto;
+  background-color: var(--background);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: calc(100vh - 3.5rem);
+}
+
+/* Dynamic fields in dark mode */
+.dynamic-group {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--border);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  position: relative;
+  transition: border-color 0.2s;
+}
+
+.dynamic-group:hover {
+  border-color: var(--primary);
+}
+
+.remove-btn {
+  position: absolute !important;
+  top: 10px;
+  right: 10px;
+}
+
+/* Scrollbar customization for panels */
+.editor-panel::-webkit-scrollbar,
+.preview-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.editor-panel::-webkit-scrollbar-track,
+.preview-panel::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+.editor-panel::-webkit-scrollbar-thumb,
+.preview-panel::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 4px;
+}
+
+/* =========================================
+   Resume Document Styles (PDF Output)
+   Keep it pure white with black text!
+   ========================================= */
+.resume-wrapper {
+  width: 100%;
+  max-width: 210mm; /* A4 width */
+  min-height: 297mm; /* A4 height approx */
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
+  border-radius: 4px; /* Only visual, won't print */
+}
+
+.resume-document {
+  padding: 2.5rem;
+  color: #000000;
+  font-family: "Inter", Arial, sans-serif;
+  line-height: 1.4;
+  font-size: 10pt;
+  background-color: #ffffff;
+}
+
+.resume-header {
+  text-align: center;
+  border-bottom: 1px solid #000;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.resume-header h1 {
+  font-size: 24pt;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+  text-transform: uppercase;
+  color: #000000;
+}
+
+.resume-header h2 {
+  font-size: 12pt;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 0.5rem;
+}
+
+.contact-info {
+  font-size: 9pt;
+  color: #444444;
+}
+
+.contact-info span.separator-before::before {
+  content: " • ";
+  margin: 0 0.3rem;
+}
+
+.resume-section {
+  margin-bottom: 1rem;
+}
+
+.resume-section .section-title {
+  font-size: 11pt;
+  text-transform: uppercase;
+  font-weight: 700;
+  border-bottom: 1px solid #cccccc;
+  padding-bottom: 0.2rem;
+  margin-bottom: 0.6rem;
+  color: #000000;
+}
+
+.skills-content {
+  font-size: 10pt;
+}
+
+.skill-category {
+  margin-bottom: 0.2rem;
+}
+
+.skill-category strong {
+  font-weight: 600;
+}
+
+/* Items List Styling */
+.item-block {
+  margin-bottom: 0.8rem;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.2rem;
+}
+
+.item-title {
+  font-weight: 700;
+  font-size: 10.5pt;
+}
+
+.item-subtitle {
+  font-style: italic;
+  font-weight: 500;
+}
+
+.item-date,
+.item-meta {
+  font-weight: 500;
+  color: #333333;
+  font-size: 9.5pt;
+}
+
+.item-desc {
+  margin-top: 0.3rem;
+}
+
+.item-desc ul {
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.item-desc li {
+  margin-bottom: 0.1rem;
+  text-align: justify;
+}
+
+/* Utilities */
+.d-none {
+  display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .app-container {
+    flex-direction: column;
+    height: auto;
+  }
+  .editor-panel,
+  .preview-panel {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+}
