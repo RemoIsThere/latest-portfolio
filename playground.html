@@ -25,9 +25,21 @@
           --card
         ); /* The CodeCanvas has its own theme but we provide a base */
       }
+
+      /* FIX: Restore default cursor functionality inside the editor */
+      #root,
+      #root * {
+        cursor: auto !important;
+      }
+
+      /* Make sure that standard text inputs specifically have text cursors */
+      .monaco-editor,
+      .monaco-editor * {
+        cursor: inherit;
+      }
     </style>
   </head>
-  <body>
+  <body class="playground-active">
     <!-- Custom Cursor -->
     <div class="custom-cursor"></div>
     <div
