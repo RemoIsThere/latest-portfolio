@@ -40,8 +40,6 @@ export default function PlayGround() {
 
       // Connect iframe console to our output
       let outputBuffer = "";
-      const originalLog = (iframe.contentWindow as any).console.log;
-      const originalError = (iframe.contentWindow as any).console.error;
 
       (iframe.contentWindow as any).console.log = (...args: any[]) => {
         outputBuffer +=
