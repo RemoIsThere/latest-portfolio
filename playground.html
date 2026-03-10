@@ -41,6 +41,28 @@
         box-sizing: border-box;
       }
 
+      /* CURSOR OVERRIDE FOR PLAYGROUND */
+      html,
+      body,
+      a,
+      button,
+      input,
+      textarea,
+      select,
+      .btn,
+      .card,
+      .nav-item {
+        cursor: auto !important;
+      }
+      /* Let Monaco handle its own cursors inside */
+      .monaco-editor,
+      .monaco-editor * {
+        cursor: inherit;
+      }
+      .monaco-editor textarea {
+        cursor: text !important;
+      }
+
       body {
         background: var(--bg-deep);
         color: var(--text-main);
@@ -540,7 +562,9 @@
       // Load Python WASM
       async function bootPython() {
         try {
-          pyodide = await loadPyodide();
+          pyodide = await loadPyodide({
+            indexURL: "https://cdn.jsdelivr.net/pyodide/v0.25.0/full/",
+          });
           // Inject Global Utils
           await pyodide.runPythonAsync(`
 import sys, io
@@ -660,9 +684,14 @@ setup_streams()
 
         try {
           if (activeLang === "python") {
+            if (!pyodide) {
+              log("Python Engine is not loaded or failed to connect.", "error");
+              throw new Error("Pyodide undefined");
+            }
             // Reset and Execute
             try {
               await pyodide.runPythonAsync(`
+import sys, io
 sys.stdout = io.StringIO()
 sys.stderr = io.StringIO()
 `);
