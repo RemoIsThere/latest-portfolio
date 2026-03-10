@@ -697,7 +697,10 @@ setup_streams()
               `https://godbolt.org/api/compiler/${compiler}/compile`,
               {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: {
+                  "Content-Type": "application/json",
+                  Accept: "application/json",
+                },
                 body: JSON.stringify({
                   source: code,
                   options: {
@@ -709,22 +712,38 @@ setup_streams()
               },
             );
 
-            if (!response.ok) throw new Error("Cluster Connection Error.");
+            if (!response.ok) {
+              const text = await response.text();
+              throw new Error(
+                `Cluster Error (${response.status}): ${text.slice(0, 50)}...`,
+              );
+            }
 
             const data = await response.json();
 
+            // Handle output from direct execution (executorRequest: true)
             if (data.stdout && data.stdout.length) {
               log(data.stdout.map((x) => x.text).join("\n"));
             }
             if (data.stderr && data.stderr.length) {
               log(data.stderr.map((x) => x.text).join("\n"), "error");
             }
-            if (
-              data.compilationServiceResponse &&
-              !data.stdout.length &&
-              !data.stderr.length
-            ) {
-              log("Project verified and executed successfully.", "system");
+
+            // Handle compilation errors if no execution output
+            if (!data.stdout?.length && !data.stderr?.length) {
+              if (data.asm && data.asm.length) {
+                log(
+                  "Code compiled successfully (no runtime output).",
+                  "system",
+                );
+              } else if (data.buildResult && data.buildResult.stderr) {
+                log(
+                  data.buildResult.stderr.map((x) => x.text).join("\n"),
+                  "error",
+                );
+              } else {
+                log("Execution complete (no output detected).", "system");
+              }
             }
           }
         } catch (err) {
