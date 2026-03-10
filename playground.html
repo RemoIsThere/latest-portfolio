@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code Playground | Rehmat Engineering</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- SVG Icons via Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/main.js" defer></script>
+
+    <!-- React App Integration -->
+    <script type="module" crossorigin src="js/playground/index.js"></script>
+    <link rel="stylesheet" crossorigin href="css/playground/index.css" />
+
+    <style>
+      /* Ensure the React app takes full height and merges with our dark theme */
+      #root {
+        min-height: 600px;
+        height: 75vh;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        overflow: hidden;
+        background-color: var(
+          --card
+        ); /* The CodeCanvas has its own theme but we provide a base */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    <div
+      class="pattern-bg"
+      style="mask-image: linear-gradient(to bottom, white, transparent)"
+    ></div>
+
+    <!-- Shadcn-like sticky header -->
+    <header class="site-header">
+      <div class="container header-container">
+        <a href="index.html" class="logo">
+          <div class="logo-dot"></div>
+          Rehmat
+        </a>
+        <nav class="header-nav">
+          <a href="index.html#about" class="nav-link">About</a>
+          <a href="index.html#expertise" class="nav-link">Expertise</a>
+          <a href="index.html#projects" class="nav-link">Deployments</a>
+          <a href="blog.html" class="nav-link">Blog</a>
+          <a href="tools.html" class="nav-link active">Tools</a>
+        </nav>
+        <div>
+          <a
+            href="index.html#contact"
+            class="btn btn-outline"
+            style="height: 2rem; font-size: 0.75rem"
+            >Book Workshop</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <main
+      class="container"
+      style="
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        display: flex;
+        flex-direction: column;
+      "
+    >
+      <div style="margin-bottom: 2rem">
+        <h1
+          style="
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            letter-spacing: -0.04em;
+          "
+        >
+          Code <span class="text-primary">Playground.</span>
+        </h1>
+        <p class="text-muted" style="font-size: 1.125rem; max-width: 650px">
+          Execute Python, Java, and JavaScript instantly in a sandboxed,
+          low-latency environment.
+        </p>
+      </div>
+
+      <!-- React App Mount Point -->
+      <div id="root"></div>
+    </main>
+
+    <footer
+      style="
+        border-top: 1px solid var(--border);
+        padding: 4rem 0;
+        margin-top: auto;
+      "
+    >
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div>
+          <div class="logo" style="margin-bottom: 0.5rem">Rehmat</div>
+          <p class="text-muted" style="font-size: 0.875rem">
+            &copy; 2026 Rehmat. All systems nominal.
+          </p>
+        </div>
+        <div style="display: flex; gap: 1rem">
+          <a
+            href="#"
+            class="btn btn-outline"
+            style="width: 40px; height: 40px; padding: 0; border-radius: 50%"
+            ><i data-lucide="linkedin" style="width: 18px; height: 18px"></i
+          ></a>
+          <a
+            href="#"
+            class="btn btn-outline"
+            style="width: 40px; height: 40px; padding: 0; border-radius: 50%"
+            ><i data-lucide="github" style="width: 18px; height: 18px"></i
+          ></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

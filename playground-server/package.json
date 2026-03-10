@@ -1,0 +1,24 @@
+{
+  "name": "codecanvas-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dockerode": "^4.0.9",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "fs-extra": "^11.3.4",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "@types/dockerode": "^4.0.1",
+    "@types/fs-extra": "^11.0.4",
+    "@types/uuid": "^10.0.0"
+  }
+}
